@@ -19,7 +19,7 @@ public class Proveedor extends Usuarios {
 
     public Proveedor(String nic, String estado, String cedula, String codigo, String nombre, String apellido, String telefono, String dirección, String correo) {
         super(cedula, codigo, nombre, apellido, telefono, dirección, correo,
-                new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
+                new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         this.nic = nic;
         this.estado = estado;
     }

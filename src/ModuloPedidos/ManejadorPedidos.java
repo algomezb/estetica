@@ -10,9 +10,12 @@ import Miembros.Proveedor;
 import Negocio.Pedido;
 import Negocio.ArticuloPedido;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -191,6 +194,62 @@ public class ManejadorPedidos {
         }
 
         return rs;
+
+    }
+
+    public Object modificarpedido(Pedido pedido) {
+
+        String modificarSql
+                = "UPDATE pedido SET "
+                + "codigo = ?, "
+                + "fecha = ?, "
+                + "cantidad = ?, "
+                + "valor = ?, "
+                + "iva = ?, "
+                + "valortotal = ?, "
+                + "estado = ?, "
+                + "cedulaproveedor = ? "
+                + "WHERE codigo = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(modificarSql);
+            pst.setInt(1, pedido.getCodigo());
+            pst.setDate(2, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(pedido.getFecha()).getTime()));
+            pst.setInt(3, pedido.getCantidad());
+            pst.setInt(4, pedido.getValor());
+            pst.setString(5, pedido.getIva());
+            pst.setInt(6, pedido.getValortotal());
+            pst.setString(7, pedido.getEstado());
+            pst.setInt(8, pedido.getProveedor());
+            pst.setInt(9, pedido.getCodigo());
+            pst.executeUpdate();
+            System.out.println(pst);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ParseException ex) {
+            Logger.getLogger(ManejadorPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
+    public boolean inhabilitarpedido(String codigo, String estado) {
+        
+        String inhabilitarSql =
+                "UPDATE pedido " + 
+                "SET estado = ? " +
+                "WHERE codigo = ?";
+
+        try {
+            PreparedStatement pst = conn.prepareStatement(inhabilitarSql);
+            pst.setString(1, estado);
+            pst.setInt(2, Integer.parseInt(codigo));
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "pedido Inhabilitado");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
 
     }
 }

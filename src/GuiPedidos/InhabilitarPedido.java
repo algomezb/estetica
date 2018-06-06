@@ -5,7 +5,6 @@
  */
 package GuiPedidos;
 
-
 import ModuloPedidos.ManejadorPedidos;
 
 import Negocio.Pedido;
@@ -22,22 +21,20 @@ import javax.swing.JOptionPane;
  *
  * @author Lizet
  */
-public class ConsultarPedido extends javax.swing.JFrame {
+public class InhabilitarPedido extends javax.swing.JFrame {
 
     /**
      * Creates new form Realizarpedidos
      */
     String fechaactual = fechaactual();
-        
-        
-        
+
     ModuloPedidos.ManejadorPedidos manejopedi;
 
-    public ConsultarPedido() throws SQLException {
+    public InhabilitarPedido() throws SQLException {
         initComponents();
         manejopedi = new ManejadorPedidos();
-      
-        
+       
+
     }
 
     /**
@@ -77,10 +74,11 @@ public class ConsultarPedido extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Consultar Pedidos");
+        jLabel1.setText("Inhabilitar pedido");
 
         jButton1.setText("Consultar pedido");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +177,13 @@ public class ConsultarPedido extends javax.swing.JFrame {
 
         jLabel2.setText("Codigo Pedido");
 
+        jButton3.setText("Inhabilitar Pedido");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,19 +191,11 @@ public class ConsultarPedido extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(jLabel1)
-                                .addGap(58, 58, 58)
-                                .addComponent(jButton1)
-                                .addGap(153, 153, 153))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel13)
-                                .addGap(41, 41, 41)))
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 71, Short.MAX_VALUE))
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel1)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,12 +218,20 @@ public class ConsultarPedido extends javax.swing.JFrame {
                             .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(41, 41, 41)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
                             .addComponent(jLabel14))
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
@@ -236,36 +241,43 @@ public class ConsultarPedido extends javax.swing.JFrame {
                                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(jLabel13))
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
@@ -280,16 +292,17 @@ public class ConsultarPedido extends javax.swing.JFrame {
                                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jButton3)))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -301,50 +314,32 @@ public class ConsultarPedido extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int ids=Integer.parseInt(jTextField1.getText());
-         
-        ResultSet rs = null;
+    consultarpedido();
 
-        rs=(ResultSet) manejopedi.consultarpedido(ids);
-        
-        
-        try {
-            if ( rs.getRow() == 0 ) {
-            if (rs.next()) {
-                 
-                jTextField2.setText(rs.getString(5));
-                jTextField3.setText(rs.getString(6));
-                jTextField4.setText(rs.getString(12));
-                jTextField5.setText(rs.getString(7));
-                jTextField6.setText(rs.getString(8));
-                jTextField7.setText(rs.getString(9));
-                jTextField8.setText(rs.getString(10));
-                jTextField9.setText(rs.getString(3));
-               jTextField12.setText(rs.getString(4));
-                jTextField10.setText(rs.getString(1));
-                jTextField11.setText(rs.getString(2));
-                jTextField13.setText(rs.getString(11));
-            }else {
-                JOptionPane.showMessageDialog(null,"No se Encontro el Usuario");
-               
-            }
-    }                                        
- 
-        } catch (SQLException ex) {
-            
-            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+    public void calcularIva() {
 
+        int valorunitario = Integer.parseInt(jTextField5.getText());
+        int cantidad = Integer.parseInt(jTextField3.getText());
+        double iva = 0.15;
+        int totalsiniva = cantidad * valorunitario;
+        double coniva = totalsiniva * iva + totalsiniva;
+        int intconiva = (int) coniva;
+        String cadena = String.valueOf(intconiva);
+
+        jTextField7.setText(cadena);
+
+    }
     private void jTextField7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MouseClicked
-        //calcularIva();
+        calcularIva();
     }//GEN-LAST:event_jTextField7MouseClicked
 
     private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
@@ -362,42 +357,86 @@ public class ConsultarPedido extends javax.swing.JFrame {
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyTyped
-    public  String fechaactual() {
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String codigo = jTextField1.getText().trim();
+        String estado = "Inhabilitado";
+        manejopedi.inhabilitarpedido(codigo, estado);
+        consultarpedido();
+    }//GEN-LAST:event_jButton3ActionPerformed
+    public String fechaactual() {
         Date fecha = new Date();
         SimpleDateFormat formatofecha = new SimpleDateFormat("yyyy-MM-dd");
 
         return formatofecha.format(fecha);
 
     }
-    public void calcularIva(){
-    
-    int valorunitario = Integer.parseInt(jTextField5.getText());
-       int cantidad =Integer.parseInt(jTextField3.getText());
-       double iva=0.15;
-       int totalsiniva=cantidad*valorunitario;
-       double coniva=totalsiniva*iva+totalsiniva;
-       int intconiva = (int)coniva;
-       String cadena = String.valueOf(intconiva);
-          
-       jTextField7.setText(cadena);
-      
-    }
-    public void codigopedido() throws SQLException{
-    String valorpedido;
-    ResultSet rs = null;
-    String nuevocodigo;
-    
 
-        rs=(ResultSet) manejopedi.consultarpedido();
-        if (rs.next()) {
-                 
-            valorpedido= rs.getString(1);
-            int pedidoint= Integer.parseInt(valorpedido);
-             pedidoint=pedidoint+1;
-             nuevocodigo=String.valueOf(pedidoint);
-             jTextField1.setText(nuevocodigo);
-            
+    public void calcularIva2() {
+
+        int valorunitario = Integer.parseInt(jTextField5.getText());
+        int cantidad = Integer.parseInt(jTextField3.getText());
+        double iva = 0.15;
+        int totalsiniva = cantidad * valorunitario;
+        double coniva = totalsiniva * iva + totalsiniva;
+        int intconiva = (int) coniva;
+        String cadena = String.valueOf(intconiva);
+
+        jTextField7.setText(cadena);
+
     }
+
+    public void codigopedido() throws SQLException {
+        String valorpedido;
+        ResultSet rs = null;
+        String nuevocodigo;
+
+        rs = (ResultSet) manejopedi.consultarpedido();
+        if (rs.next()) {
+
+            valorpedido = rs.getString(1);
+            int pedidoint = Integer.parseInt(valorpedido);
+            pedidoint = pedidoint + 1;
+            nuevocodigo = String.valueOf(pedidoint);
+            jTextField1.setText(nuevocodigo);
+
+        }
+    }
+    public void consultarpedido(){
+    
+    int ids = Integer.parseInt(jTextField1.getText());
+
+        ResultSet rs = null;
+
+        rs = (ResultSet) manejopedi.consultarpedido(ids);
+
+        try {
+            if (rs.getRow() == 0) {
+                if (rs.next()) {
+
+                    jTextField2.setText(rs.getString(5));
+                    jTextField3.setText(rs.getString(6));
+                    jTextField4.setText(rs.getString(12));
+                    jTextField5.setText(rs.getString(7));
+                    jTextField6.setText(rs.getString(8));
+                    jTextField7.setText(rs.getString(9));
+                    jTextField8.setText(rs.getString(10));
+                    jTextField9.setText(rs.getString(3));
+                    jTextField12.setText(rs.getString(4));
+                    jTextField10.setText(rs.getString(1));
+                    jTextField11.setText(rs.getString(2));
+                    jTextField13.setText(rs.getString(11));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se Encontro el pedido");
+
+                }
+            }
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
     /**
@@ -417,14 +456,20 @@ public class ConsultarPedido extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InhabilitarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InhabilitarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InhabilitarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InhabilitarPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -432,9 +477,9 @@ public class ConsultarPedido extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new ConsultarPedido().setVisible(true);
+                    new InhabilitarPedido().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(ConsultarPedido.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(InhabilitarPedido.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -442,6 +487,7 @@ public class ConsultarPedido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
