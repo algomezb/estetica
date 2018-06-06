@@ -7,10 +7,6 @@ package Guiproveedores;
 
 import Moduloproveedores.ManejadorProveedor;
 import Miembros.Proveedor;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -105,7 +101,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
         jLabel7.setText("Correo");
 
-        jLabel9.setText("Nic");
+        jLabel9.setText("nic");
 
         jLabel11.setText("Apellido");
 
@@ -253,10 +249,12 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
         Proveedor prov = new Proveedor(
                 jTextField8.getText(),
-                activo.getText(), Integer.parseInt(jTextField1.getText()),
-                Integer.parseInt(jTextField3.getText()), jTextField2.getText(),
+                activo.getText(),
+                jTextField1.getText(),
+                jTextField3.getText(),
+                jTextField2.getText(),
                 jTextField10.getText(),
-                Integer.parseInt(jTextField4.getText()),
+                jTextField4.getText(),
                 jTextField5.getText(),
                 jTextField6.getText()
         );
@@ -264,34 +262,19 @@ public class IngresarProveedor extends javax.swing.JFrame {
        
        
         if (validardatosvacios == false ) {
-            manejoprov.insertar(prov);
-            limpiar();
+            boolean resultado = manejoprov.insertar(prov);
+            if (resultado) {
+                JOptionPane.showMessageDialog(this, "Acabamos de insertar el nuevo registro");
+                this.limpiar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Un proveedor con esa cedula ya existe");
+            }
         } else{
              JOptionPane.showMessageDialog(this, "El registro ya se encuentra ingresado");
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public boolean validaringreso() {
-        boolean resultado = false;
-        int cedula = Integer.parseInt(jTextField1.getText());
-        ResultSet rs = null;
-
-        rs = (ResultSet) manejoprov.ValidarProveedor(cedula);
-        try {
-            if (rs.getRow() == 0) {
-                resultado = false;
-
-            } else {
-                resultado = true;
-                JOptionPane.showMessageDialog(this, "El registro ya se encuentra ingresado");
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(IngresarProveedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return resultado;
-    }
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
 
     }//GEN-LAST:event_activoActionPerformed
@@ -318,25 +301,24 @@ public class IngresarProveedor extends javax.swing.JFrame {
         boolean resultado = false;
         String nombre;
         String apellido;
-        int cedula;
-        String Nic;
-        int codigo;
+        String cedula;
+        String nic;
+        String codigo;
         String direccion;
         String correo;
-        String tiempo;
-        String fechanacimiento;
-        int telefono;
-        nombre = jTextField2.getText();
-        apellido = jTextField10.getText();
-        cedula = Integer.parseInt(jTextField1.getText());
-        Nic = jTextField8.getText();
-        //codigo = jTextField3.getText();
-        telefono = Integer.parseInt(jTextField4.getText());
-        direccion = jTextField5.getText();
-        correo = jTextField6.getText();
+        String telefono;
 
-        if (apellido.equals("") || nombre.equals("") || Nic.equals("")
-                || direccion.equals("") || correo.equals("")) {
+        nombre = jTextField2.getText().trim();
+        apellido = jTextField10.getText().trim();
+        cedula = jTextField1.getText().trim();
+        nic = jTextField8.getText().trim();
+        //codigo = jTextField3.getText();
+        telefono = jTextField4.getText().trim();
+        direccion = jTextField5.getText().trim();
+        correo = jTextField6.getText().trim();
+
+        if (apellido.isEmpty() || nombre.isEmpty() || nic.isEmpty()
+            || direccion.isEmpty() || correo.isEmpty()) {
             resultado = true;
             JOptionPane.showMessageDialog(this, "No se deben dejar espacios vacios");
         }

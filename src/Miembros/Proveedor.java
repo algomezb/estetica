@@ -17,18 +17,14 @@ public class Proveedor extends Usuarios{
     protected String nic;
     protected String estado;
 
-   // public proveedor(int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo, String fechaNacimiento) {
-        //super(cedula, codigo, nombre, apellido, telefono, dirección, correo, fechaNacimiento);
-    //}
-
-    public Proveedor() {
-    }
-
-    public Proveedor(String nic, String estado, int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo) {
+    public Proveedor(String nic, String estado, String cedula, String codigo, String nombre, String apellido, String telefono, String dirección, String correo) {
         super(cedula, codigo, nombre, apellido, telefono, dirección, correo,
                 new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
         this.nic = nic;
         this.estado = estado;
+    }
+
+    public Proveedor() {
     }
 
     public String getNic() {
@@ -47,9 +43,4 @@ public class Proveedor extends Usuarios{
         this.estado = estado;
     }
 
-    
-    
-    
-    
-    
 }

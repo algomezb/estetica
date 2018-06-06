@@ -10,16 +10,20 @@ package Miembros;
  * @author Lizet
  */
 public class Usuarios {
-    protected int cedula;
-    protected int codigo;
+
+    protected String cedula;
+    protected String codigo;
     protected String nombre;
     protected String apellido;
-    protected int telefono;
+    protected String telefono;
     protected String dirección; 
     protected String correo;
-    protected String fechaNacimiento; 
+    protected String fechaNacimiento;
 
-    public Usuarios(int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo, String fechaNacimiento) {
+    public Usuarios() {
+    }
+
+    public Usuarios(String cedula, String codigo, String nombre, String apellido, String telefono, String dirección, String correo, String fechaNacimiento) {
         this.cedula = cedula;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -30,22 +34,19 @@ public class Usuarios {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Usuarios() {
-    }
-
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -65,11 +66,11 @@ public class Usuarios {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -96,7 +97,5 @@ public class Usuarios {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
-    
-    
+
 }

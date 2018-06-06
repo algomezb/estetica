@@ -292,16 +292,12 @@ public class ModificarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_activoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int ids = Integer.parseInt(jTextField11.getText());
-
-        ResultSet rs = null;
-
-        rs = (ResultSet) manejoprov.consultar(ids);
+        String cedula = jTextField11.getText().trim();
+        ResultSet rs = manejoprov.consultar(cedula);
 
         try {
             if (rs.getRow() == 0) {
                 if (rs.next()) {
-
                     jTextField8.setText(rs.getString(8));
                     jTextField1.setText(rs.getString(1));
                     jTextField2.setText(rs.getString(2));
@@ -329,12 +325,13 @@ public class ModificarProveedor extends javax.swing.JFrame {
         Proveedor prov = new Proveedor(
                 jTextField8.getText(),
                 activo.getText(),
-                Integer.parseInt(jTextField1.getText()),
-                Integer.parseInt(jTextField3.getText()),
+                jTextField1.getText(),
+                jTextField3.getText(),
                 jTextField2.getText(),
                 jTextField10.getText(),
-                Integer.parseInt(jTextField4.getText()),
-                jTextField5.getText(), jTextField6.getText()
+                jTextField4.getText(),
+                jTextField5.getText(),
+                jTextField6.getText()
         );
         manejoprov.modificar(prov);
     }//GEN-LAST:event_jButton2ActionPerformed

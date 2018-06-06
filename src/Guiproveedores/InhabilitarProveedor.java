@@ -22,10 +22,11 @@ public class InhabilitarProveedor extends javax.swing.JFrame {
     /**
      * Creates new form IngresarProveedor
      */
-     Moduloproveedores.ManejadorProveedor manejoprov;
+    Moduloproveedores.ManejadorProveedor manejoprov;
+
     public InhabilitarProveedor() {
         initComponents();
-         manejoprov = new ManejadorProveedor();
+        manejoprov = new ManejadorProveedor();
     }
 
     /**
@@ -309,46 +310,53 @@ public class InhabilitarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[a-zA-z]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[a-zA-z]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-       String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[0-9.0-9]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9.0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
-         String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[a-zA-z]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[a-zA-z]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField10KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-      String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[0-9.0-9]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9.0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
-       
+
     }//GEN-LAST:event_activoActionPerformed
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    Consultar();
-                                
+
+        Consultar();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    int ids= Integer.parseInt(jTextField11.getText());
-    String Estado= "Inhabilitado";
-      manejoprov.inhabilitar(ids,Estado); 
-    Consultar();
-     
-      
+        String cedula = jTextField11.getText().trim();
+        String estado = "Inhabilitado";
+        manejoprov.inhabilitar(cedula, estado);
+        Consultar();
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
-public void limpiar(){
-    
-     
+    public void limpiar() {
+
         jTextField8.setText(" ");
         jTextField9.setText(" ");
         jTextField1.setText(" ");
@@ -361,42 +369,39 @@ public void limpiar(){
         jTextField7.setText(" ");
     }
 
-public void Consultar(){ 
-      int id=Integer.parseInt(jTextField11.getText());
-         
-        ResultSet rs = null;
+    public void Consultar() {
 
-        rs=(ResultSet) manejoprov.consultar(id);
-        
-        
+        String cedula = jTextField11.getText().trim();
+        ResultSet rs = manejoprov.consultar(cedula);
+
         try {
-            if ( rs.getRow() == 0 ) {
-            if (rs.next()) {
-                 
-                jTextField8.setText(rs.getString(8));
-                jTextField1.setText(rs.getString(1));
-                jTextField2.setText(rs.getString(2));
-                jTextField10.setText(rs.getString(10));
-                jTextField4.setText(rs.getString(9));
-                jTextField5.setText(rs.getString(4));
-                jTextField6.setText(rs.getString(5));
-                jTextField7.setText(rs.getString(6));
-                jTextField9.setText(rs.getString(7));
-                jTextField3.setText(rs.getString(3));
-                activo.setText(rs.getString(11));
-            }else {
-                JOptionPane.showMessageDialog(null,"No se Encontro el Usuario");
-                limpiar();
+            if (rs.getRow() == 0) {
+                if (rs.next()) {
+
+                    jTextField8.setText(rs.getString(8));
+                    jTextField1.setText(rs.getString(1));
+                    jTextField2.setText(rs.getString(2));
+                    jTextField10.setText(rs.getString(10));
+                    jTextField4.setText(rs.getString(9));
+                    jTextField5.setText(rs.getString(4));
+                    jTextField6.setText(rs.getString(5));
+                    jTextField7.setText(rs.getString(6));
+                    jTextField9.setText(rs.getString(7));
+                    jTextField3.setText(rs.getString(3));
+                    activo.setText(rs.getString(11));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se Encontro el Usuario");
+                    limpiar();
+                }
             }
-    }                                        
- 
+
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-      
-     }
+
+    }
+
     /**
      * @param args the command line arguments
      */

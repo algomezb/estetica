@@ -5,7 +5,9 @@ import Miembros.Proveedor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,130 +27,148 @@ public class ManejadorProveedor {
     }
 
     public boolean insertar(Object obj) {
-        boolean var = false;
 
         if (obj instanceof Proveedor) {
 
             Proveedor usutemp = new Proveedor();
             usutemp = (Proveedor) obj;
-            String consultaSQL = "insert into proveedor(nic,cedula,codigo,nombre,apellido,telefono,direccion,correo,fechanac,estado)"
-                    + " values ('"
-                    + usutemp.getNic() + "',"
-                    + usutemp.getCedula() + "," + usutemp.getCodigo() + ",'"
-                    + usutemp.getNombre() + "','" + usutemp.getApellido() + "',"
-                    + usutemp.getTelefono()+ ",'" + usutemp.getDirección() + "','"
-                    + usutemp.getCorreo() + "','" + usutemp.getFechaNacimiento() + "','"
-                    + usutemp.getEstado() + "')";
+            String insertarSql
+                    = "INSERT INTO proveedor "
+                    + "(nic, cedula, codigo, nombre, apellido, telefono, direccion, correo, fechanac, estado)"
+                    + "VALUES"
+                    + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try {
-
-                Statement st = conn.createStatement();
-                st.executeUpdate(consultaSQL);
-                JOptionPane.showMessageDialog(null, "Proveedor ingresado");
-                System.out.println(st);
-                var = true;
-                return var;
+                if (this.existeProveedor(usutemp.getCedula())) {
+                    return false;
+                }
+                PreparedStatement pst = conn.prepareStatement(insertarSql);
+                pst.setString(1, usutemp.getNic());
+                pst.setLong(2, Integer.parseInt(usutemp.getCedula()));
+                pst.setLong(3, Long.parseLong(usutemp.getCodigo()));
+                pst.setString(4, usutemp.getNombre());
+                pst.setString(5, usutemp.getApellido());
+                pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
+                pst.setString(7, usutemp.getDirección());
+                pst.setString(8, usutemp.getCorreo());
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
+                pst.setString(10, usutemp.getEstado());
+                pst.executeUpdate();
+                System.out.println(pst);
+                return true;
 
             } catch (SQLException ex) {
-                var = false;
                 ex.printStackTrace();
-                return var;
-
+                return false;
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+                return false;
             }
         }
 
-        return var;
+        return false;
     }
 
-    public Object consultar(int id) {
-
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
-
-        try {
-
-            Conexion pg = new Conexion();
-            conn = pg.postgresConn();
-            st = conn.createStatement();
-            rs = st.executeQuery("SELECT  cedula,nombre,codigo,direccion,correo,fechanac,tiempo,nic,telefono,apellido,estado\n"
-                    + "from proveedor\n"
-                    + "where cedula=" + id + " ");
-        } catch (SQLException ex) {
-            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return rs;
-
-    }
+    
 
     public Object modificar(Object obj) {
         if (obj instanceof Proveedor) {
 
             Proveedor usutemp = new Proveedor();
             usutemp = (Proveedor) obj;
-            String consultaSQL = "UPDATE proveedor SET nic = '" + usutemp.getNic()
-                    + "',cedula = " + usutemp.getCedula()
-                    + ",nombre = '" + usutemp.getNombre() 
-                    +"',apellido = '" + usutemp.getApellido()
-                    + "',codigo = " + usutemp.getCodigo()
-                    + ",telefono = " + usutemp.getTelefono()
-                    + ",direccion = '" + usutemp.getDirección()
-                    + "',correo = '" + usutemp.getCorreo()
-                    + "',fechanac = '" + usutemp.getFechaNacimiento()
-                    + "',estado = '" + usutemp.getEstado()
-                    + "' WHERE cedula = " + usutemp.getCedula() + " ;";
+            String modificarSql =
+                    "UPDATE proveedor SET "
+                    + "nic = ?, "
+                    + "cedula = ?, "
+                    + "codigo = ?, "
+                    + "nombre = ?, "
+                    + "apellido = ?, "
+                    + "telefono = ?, "
+                    + "direccion = ?, "
+                    + "correo = ?, "
+                    + "fechanac = ?, "
+                    + "estado = ?"
+                    + "WHERE cedula = ?";
             try {
-                Statement st = conn.createStatement();
-                st.executeUpdate(consultaSQL);
-                JOptionPane.showMessageDialog(null, "Proveedor Modificado");
-                System.out.println(st);
+                PreparedStatement pst = conn.prepareStatement(modificarSql);
+                pst.setString(1, usutemp.getNic());
+                pst.setLong(2, Integer.parseInt(usutemp.getCedula()));
+                pst.setLong(3, Long.parseLong(usutemp.getCodigo()));
+                pst.setString(4, usutemp.getNombre());
+                pst.setString(5, usutemp.getApellido());
+                pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
+                pst.setString(7, usutemp.getDirección());
+                pst.setString(8, usutemp.getCorreo());
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
+                pst.setString(10, usutemp.getEstado());
+                pst.setLong(11, Integer.parseInt(usutemp.getCedula()));
+                pst.executeUpdate();
+                System.out.println(pst);
 
             } catch (SQLException ex) {
-
                 ex.printStackTrace();
-
+            } catch (ParseException ex) {
+                ex.printStackTrace();
             }
         }
         return null;
 
     }
-    public boolean inhabilitar(int id, String Estado) {
-        Connection conn = null;
-        Statement st = null;
-        
-        try {
 
-            Conexion pg = new Conexion();
-            conn = pg.postgresConn();
-            st = conn.createStatement();
-            st.executeUpdate ("UPDATE proveedor SET estado = '" + Estado + "' WHERE cedula = " + id + " ;");
-                    
-             JOptionPane.showMessageDialog(null,"Proveedor Inhabilitado");
+    public boolean inhabilitar(String cedula, String estado) {
+        
+        String inhabilitarSql =
+                "UPDATE proveedor " + 
+                "SET estado = ? " +
+                "WHERE cedula = ?";
+
+        try {
+            PreparedStatement pst = conn.prepareStatement(inhabilitarSql);
+            pst.setString(1, estado);
+            pst.setLong(2, Long.parseLong(cedula));
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Proveedor Inhabilitado");
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
 
     }
-    public ResultSet ValidarProveedor(int cedula) {
-       Connection conn = null;
-        Statement st = null;
+    
+    public ResultSet consultar(String cedula) {
+        Connection conn = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
 
-        try {
+        String selectString
+                = "SELECT "
+                + "cedula, nombre, codigo, direccion, correo, fechanac,"
+                + "tiempo, nic, telefono, apellido, estado "
+                + "FROM proveedor "
+                + "WHERE cedula = ?";
 
+        try {
             Conexion pg = new Conexion();
             conn = pg.postgresConn();
-            st = conn.createStatement();
-            rs = st.executeQuery("SELECT  *\n"
-                    + "from proveedor\n"
-                    + "where cedula=" + cedula + " ");
+            pst = conn.prepareStatement(selectString);
+            pst.setLong(1, Long.parseLong(cedula));
+            rs = pst.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return rs;
- 
+       return rs;
+
+    }
+
+    public boolean existeProveedor(String cedula) {
+        ResultSet rs = this.consultar(cedula);
+        try {
+            return rs != null && rs.getFetchSize() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }
