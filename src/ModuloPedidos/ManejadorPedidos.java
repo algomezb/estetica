@@ -8,7 +8,7 @@ package ModuloPedidos;
 import Miembros.Conexion;
 import Miembros.Proveedor;
 import Negocio.Pedido;
-import Negocio.articulopedido;
+import Negocio.ArticuloPedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,10 +70,10 @@ public class ManejadorPedidos {
 
     public void insertararticulopedido(Object obj) {
 
-        if (obj instanceof articulopedido) {
+        if (obj instanceof ArticuloPedido) {
 
-            articulopedido usutemp = new articulopedido();
-            usutemp = (articulopedido) obj;
+            ArticuloPedido usutemp = new ArticuloPedido();
+            usutemp = (ArticuloPedido) obj;
             String consultaSQL = "insert into articulopedido(id,codigo)"
                     + " values ("
                     + usutemp.getIdarticulo() + "," + usutemp.getCodigo() + ")";

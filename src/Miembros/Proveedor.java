@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat;
  *
  * @author Lizet
  */
-public class Proveedor extends Usuarios{
-    
+public class Proveedor extends Usuarios {
+
     protected String nic;
     protected String estado;
 
@@ -43,4 +43,16 @@ public class Proveedor extends Usuarios{
         this.estado = estado;
     }
 
+    @Override
+    public String validar() {
+        StringBuilder errors = new StringBuilder();
+        if (nic.isEmpty()) {
+            errors.append("NIC: No debe estar vacío\n");
+        }
+        if (estado.isEmpty()) {
+            errors.append("Estado: No debe estar vacío\n");
+        }
+        errors.append(super.validar());
+        return errors.toString();
+    }
 }

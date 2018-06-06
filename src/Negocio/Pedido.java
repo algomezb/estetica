@@ -98,11 +98,36 @@ public class Pedido {
         this.proveedor = proveedor;
     }
 
-    
-    
-
-   
-    
-    
-    
+    public String validar() {
+        StringBuilder errors = new StringBuilder();
+        if (this.codigo < 0) {
+            errors.append("Código: No debe ser menor que cero");
+            errors.append("\n");
+        }
+        if (this.fecha.isEmpty()) {
+            errors.append(" No debe estar vacío");
+            errors.append("\n");
+        }
+        if (this.cantidad < 0) {
+            errors.append("Cantidad: No debe ser menor que cero");
+            errors.append("\n");
+        }
+        if (this.valor < 0) {
+            errors.append("Valor: No debe ser menor que cero");
+            errors.append("\n");
+        }
+        if (this.iva.isEmpty()) {
+            errors.append("IVA: No debe estar vacío");
+            errors.append("\n");
+        }
+        if (this.estado.isEmpty()) {
+            errors.append("Estado: No debe estar vacío");
+            errors.append("\n");
+        }
+        if (this.valortotal < 0) {
+            errors.append("Valor total: No debe ser menor que cero");
+            errors.append("\n");
+        }
+        return errors.toString();
+    }
 }

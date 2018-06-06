@@ -6,9 +6,10 @@
 package GuiPedidos;
 
 import ModuloPedidos.ManejadorPedidos;
+import Negocio.ConstructorPedido;
 
 import Negocio.Pedido;
-import Negocio.articulopedido;
+import Negocio.ArticuloPedido;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -21,22 +22,20 @@ import javax.swing.JOptionPane;
  *
  * @author Lizet
  */
-public class Realizarpedidos extends javax.swing.JFrame {
+public class RealizarPedidos extends javax.swing.JFrame {
 
     /**
-     * Creates new form Realizarpedidos
+     * Creates new form RealizarPedidos
      */
     String fechaactual = fechaactual();
-        
-        
-        
+
     ModuloPedidos.ManejadorPedidos manejopedi;
 
-    public Realizarpedidos() throws SQLException {
+    public RealizarPedidos() throws SQLException {
         initComponents();
         manejopedi = new ManejadorPedidos();
-         jTextField2.setText(fechaactual);
-         codigopedido();
+        jTextField2.setText(fechaactual);
+        codigopedido();
     }
 
     /**
@@ -226,65 +225,87 @@ public class Realizarpedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Pedido pedi = new Pedido(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), Integer.parseInt(jTextField5.getText()), jTextField6.getText(), jTextField8.getText(), Integer.parseInt(jTextField7.getText()), Integer.parseInt(jTextField9.getText()));
-        articulopedido articulopedido = new articulopedido(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField1.getText()));
-        manejopedi.insertarpedido(pedi);
-        manejopedi.insertararticulopedido(articulopedido);
+        ConstructorPedido constructor = new ConstructorPedido();
+        constructor.setCodigo(jTextField1.getText());
+        constructor.setFecha(jTextField2.getText());
+        constructor.setCantidad(jTextField3.getText());
+        constructor.setValor(jTextField5.getText());
+        constructor.setIva(jTextField6.getText());
+        constructor.setEstado(jTextField8.getText());
+        constructor.setValortotal(jTextField7.getText());
+        constructor.setProveedor(jTextField9.getText());
+        String erroresConstructor = constructor.validar();
+        if (!erroresConstructor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, erroresConstructor);
+            return;
+        }
+        Pedido pedi = constructor.construir();
+        String pediErrores = pedi.validar();
+        if (!pediErrores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, pediErrores);
+        } else {
+            ArticuloPedido articulopedido = new ArticuloPedido(
+                    Integer.parseInt(jTextField4.getText()),
+                    Integer.parseInt(jTextField1.getText())
+            );
+            manejopedi.insertarpedido(pedi);
+            manejopedi.insertararticulopedido(articulopedido);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
-       
-      
-       
+
+
     }//GEN-LAST:event_jTextField7KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-         
+
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        
+
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jTextField7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MouseClicked
-       calcularIva();
+        calcularIva();
     }//GEN-LAST:event_jTextField7MouseClicked
-    public  String fechaactual() {
+    public String fechaactual() {
         Date fecha = new Date();
         SimpleDateFormat formatofecha = new SimpleDateFormat("yyyy-MM-dd");
 
         return formatofecha.format(fecha);
 
     }
-    public void calcularIva(){
-    
-    int valorunitario = Integer.parseInt(jTextField5.getText());
-       int cantidad =Integer.parseInt(jTextField3.getText());
-       double iva=0.15;
-       int totalsiniva=cantidad*valorunitario;
-       double coniva=totalsiniva*iva+totalsiniva;
-       int intconiva = (int)coniva;
-       String cadena = String.valueOf(intconiva);
-          
-       jTextField7.setText(cadena);
-      
-    }
-    public void codigopedido() throws SQLException{
-    String valorpedido;
-    ResultSet rs = null;
-    String nuevocodigo;
-    
 
-        rs=(ResultSet) manejopedi.consultarpedido();
-        if (rs.next()) {
-                 
-            valorpedido= rs.getString(1);
-            int pedidoint= Integer.parseInt(valorpedido);
-             pedidoint=pedidoint+1;
-             nuevocodigo=String.valueOf(pedidoint);
-             jTextField1.setText(nuevocodigo);
-            
+    public void calcularIva() {
+
+        int valorunitario = Integer.parseInt(jTextField5.getText());
+        int cantidad = Integer.parseInt(jTextField3.getText());
+        double iva = 0.15;
+        int totalsiniva = cantidad * valorunitario;
+        double coniva = totalsiniva * iva + totalsiniva;
+        int intconiva = (int) coniva;
+        String cadena = String.valueOf(intconiva);
+
+        jTextField7.setText(cadena);
+
     }
+
+    public void codigopedido() throws SQLException {
+        String valorpedido;
+        ResultSet rs = null;
+        String nuevocodigo;
+
+        rs = (ResultSet) manejopedi.consultarpedido();
+        if (rs.next()) {
+
+            valorpedido = rs.getString(1);
+            int pedidoint = Integer.parseInt(valorpedido);
+            pedidoint = pedidoint + 1;
+            nuevocodigo = String.valueOf(pedidoint);
+            jTextField1.setText(nuevocodigo);
+
+        }
     }
 
     /**
@@ -304,23 +325,24 @@ public class Realizarpedidos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Realizarpedidos().setVisible(true);
+                    new RealizarPedidos().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(Realizarpedidos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RealizarPedidos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
