@@ -6,7 +6,7 @@
 package Guiproveedores;
 
 import Moduloproveedores.ManejadorProveedor;
-import Miembros.proveedor;
+import Miembros.Proveedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,10 +22,11 @@ public class ModificarProveedor extends javax.swing.JFrame {
     /**
      * Creates new form IngresarProveedor
      */
-     Moduloproveedores.ManejadorProveedor manejoprov;
+    Moduloproveedores.ManejadorProveedor manejoprov;
+
     public ModificarProveedor() {
         initComponents();
-         manejoprov = new ManejadorProveedor();
+        manejoprov = new ManejadorProveedor();
     }
 
     /**
@@ -50,12 +51,8 @@ public class ModificarProveedor extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         activo = new javax.swing.JTextField();
@@ -112,11 +109,7 @@ public class ModificarProveedor extends javax.swing.JFrame {
 
         jLabel7.setText("Correo");
 
-        jLabel8.setText("Fecha Nacimiento");
-
         jLabel9.setText("Nic");
-
-        jLabel10.setText("Tiempo");
 
         jLabel11.setText("Apellido");
 
@@ -160,13 +153,13 @@ public class ModificarProveedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -179,41 +172,26 @@ public class ModificarProveedor extends javax.swing.JFrame {
                                                 .addComponent(jLabel3))
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel7)
-                                                .addComponent(jLabel6)))
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel12)))
                                         .addGap(56, 56, 56))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel10))
-                                        .addGap(67, 67, 67))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel13)
-                                        .addGap(48, 48, 48)))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(jTextField9)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                                        .addGap(48, 48, 48)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(activo, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,20 +243,13 @@ public class ModificarProveedor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addContainerGap(134, Short.MAX_VALUE))
+                    .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
@@ -289,80 +260,94 @@ public class ModificarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[a-zA-z]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[a-zA-z]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-       String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[0-9.0-9]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9.0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
-         String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[a-zA-z]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[a-zA-z]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField10KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-      String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[0-9.0-9]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9.0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void activoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activoActionPerformed
-       
+
     }//GEN-LAST:event_activoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int ids=Integer.parseInt(jTextField11.getText());
-         
+        int ids = Integer.parseInt(jTextField11.getText());
+
         ResultSet rs = null;
 
-        rs=(ResultSet) manejoprov.consultar(ids);
-        
-        
+        rs = (ResultSet) manejoprov.consultar(ids);
+
         try {
-            if ( rs.getRow() == 0 ) {
-            if (rs.next()) {
-                 
-                jTextField8.setText(rs.getString(8));
-                jTextField1.setText(rs.getString(1));
-                jTextField2.setText(rs.getString(2));
-                jTextField10.setText(rs.getString(10));
-                jTextField4.setText(rs.getString(9));
-                jTextField5.setText(rs.getString(4));
-                jTextField6.setText(rs.getString(5));
-                jTextField7.setText(rs.getString(6));
-                jTextField9.setText(rs.getString(7));
-                jTextField3.setText(rs.getString(3));
-                activo.setText(rs.getString(11));
-            }else {
-                JOptionPane.showMessageDialog(null,"No se Encontro el Usuario");
-                limpiar();
+            if (rs.getRow() == 0) {
+                if (rs.next()) {
+
+                    jTextField8.setText(rs.getString(8));
+                    jTextField1.setText(rs.getString(1));
+                    jTextField2.setText(rs.getString(2));
+                    jTextField10.setText(rs.getString(10));
+                    jTextField4.setText(rs.getString(9));
+                    jTextField5.setText(rs.getString(4));
+                    jTextField6.setText(rs.getString(5));
+                    jTextField3.setText(rs.getString(3));
+                    activo.setText(rs.getString(11));
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se Encontro el Usuario");
+                    limpiar();
+                }
             }
-    }                                        
- 
+
         } catch (SQLException ex) {
-            
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-                                
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         proveedor prov = new proveedor(jTextField8.getText(), jTextField9.getText(),activo.getText(),Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField3.getText()) , jTextField2.getText(), jTextField10.getText(), Integer.parseInt(jTextField4.getText()), jTextField5.getText(),jTextField6.getText() , jTextField7.getText());
-         manejoprov.modificar(prov);
+        Proveedor prov = new Proveedor(
+                jTextField8.getText(),
+                activo.getText(),
+                Integer.parseInt(jTextField1.getText()),
+                Integer.parseInt(jTextField3.getText()),
+                jTextField2.getText(),
+                jTextField10.getText(),
+                Integer.parseInt(jTextField4.getText()),
+                jTextField5.getText(), jTextField6.getText()
+        );
+        manejoprov.modificar(prov);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-         String  c=String.valueOf(evt.getKeyChar());
-           if(!c.matches("[0-9.0-9]"))evt.consume();
+        String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9.0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField3KeyTyped
-public void limpiar(){
-    
-     
+    public void limpiar() {
+
         jTextField8.setText(" ");
-        jTextField9.setText(" ");
         jTextField1.setText(" ");
         jTextField3.setText(" ");
         jTextField2.setText(" ");
@@ -370,8 +355,8 @@ public void limpiar(){
         jTextField4.setText(" ");
         jTextField5.setText(" ");
         jTextField6.setText(" ");
-        jTextField7.setText(" ");
     }
+
     /**
      * @param args the command line arguments
      */
@@ -415,7 +400,6 @@ public void limpiar(){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -425,7 +409,6 @@ public void limpiar(){
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -435,8 +418,6 @@ public void limpiar(){
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

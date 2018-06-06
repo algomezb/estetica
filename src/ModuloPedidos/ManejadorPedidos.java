@@ -6,7 +6,7 @@
 package ModuloPedidos;
 
 import Miembros.Conexion;
-import Miembros.proveedor;
+import Miembros.Proveedor;
 import Negocio.Pedido;
 import Negocio.articulopedido;
 import java.sql.Connection;
@@ -148,7 +148,7 @@ public class ManejadorPedidos {
                     + "from proveedor\n"
                     + "where cedula=" + id + " ");
         } catch (SQLException ex) {
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rs;

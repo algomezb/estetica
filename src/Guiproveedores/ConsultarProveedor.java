@@ -6,7 +6,7 @@
 package Guiproveedores;
 
 import Moduloproveedores.ManejadorProveedor;
-import Miembros.proveedor;
+import Miembros.Proveedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -348,7 +348,7 @@ public class ConsultarProveedor extends javax.swing.JFrame {
  
         } catch (SQLException ex) {
             
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
     
                                 

@@ -1,8 +1,7 @@
 package Moduloproveedores;
 
 import Miembros.Conexion;
-import Miembros.Usuarios;
-import Miembros.proveedor;
+import Miembros.Proveedor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,13 +27,13 @@ public class ManejadorProveedor {
     public boolean insertar(Object obj) {
         boolean var = false;
 
-        if (obj instanceof proveedor) {
+        if (obj instanceof Proveedor) {
 
-            proveedor usutemp = new proveedor();
-            usutemp = (proveedor) obj;
-            String consultaSQL = "insert into proveedor(nic,tiempo,cedula,codigo,nombre,apellido,telefono,direccion,correo,fechanac,estado)"
+            Proveedor usutemp = new Proveedor();
+            usutemp = (Proveedor) obj;
+            String consultaSQL = "insert into proveedor(nic,cedula,codigo,nombre,apellido,telefono,direccion,correo,fechanac,estado)"
                     + " values ('"
-                    + usutemp.getNic() + "','" + usutemp.getTiempo() + "',"
+                    + usutemp.getNic() + "',"
                     + usutemp.getCedula() + "," + usutemp.getCodigo() + ",'"
                     + usutemp.getNombre() + "','" + usutemp.getApellido() + "',"
                     + usutemp.getTelefono()+ ",'" + usutemp.getDirección() + "','"
@@ -76,7 +75,7 @@ public class ManejadorProveedor {
                     + "from proveedor\n"
                     + "where cedula=" + id + " ");
         } catch (SQLException ex) {
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rs;
@@ -84,10 +83,10 @@ public class ManejadorProveedor {
     }
 
     public Object modificar(Object obj) {
-        if (obj instanceof proveedor) {
+        if (obj instanceof Proveedor) {
 
-            proveedor usutemp = new proveedor();
-            usutemp = (proveedor) obj;
+            Proveedor usutemp = new Proveedor();
+            usutemp = (Proveedor) obj;
             String consultaSQL = "UPDATE proveedor SET nic = '" + usutemp.getNic()
                     + "',cedula = " + usutemp.getCedula()
                     + ",nombre = '" + usutemp.getNombre() 
@@ -97,7 +96,6 @@ public class ManejadorProveedor {
                     + ",direccion = '" + usutemp.getDirección()
                     + "',correo = '" + usutemp.getCorreo()
                     + "',fechanac = '" + usutemp.getFechaNacimiento()
-                    + "',tiempo = '" + usutemp.getTiempo()
                     + "',estado = '" + usutemp.getEstado()
                     + "' WHERE cedula = " + usutemp.getCedula() + " ;";
             try {
@@ -128,7 +126,7 @@ public class ManejadorProveedor {
                     
              JOptionPane.showMessageDialog(null,"Proveedor Inhabilitado");
         } catch (SQLException ex) {
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
 
@@ -147,7 +145,7 @@ public class ManejadorProveedor {
                     + "from proveedor\n"
                     + "where cedula=" + cedula + " ");
         } catch (SQLException ex) {
-            Logger.getLogger(proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rs;
