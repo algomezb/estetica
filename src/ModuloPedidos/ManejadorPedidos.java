@@ -252,4 +252,25 @@ public class ManejadorPedidos {
         return false;
 
     }
+    public Object consultarpreciopedido(int id) {
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+
+            Conexion pg = new Conexion();
+            conn = pg.postgresConn();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT  precioventa,nombre\n"
+                    + "from producto\n"
+                    + "where id=" + id + "  ");
+        } catch (SQLException ex) {
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+
+    }
 }
