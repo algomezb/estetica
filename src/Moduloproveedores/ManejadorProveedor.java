@@ -5,11 +5,9 @@ import Miembros.Proveedor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -53,11 +51,7 @@ public class ManejadorProveedor {
                 pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
                 pst.setString(7, usutemp.getDirección());
                 pst.setString(8, usutemp.getCorreo());
-                pst.setDate(9, java.sql.Date.valueOf(
-                        new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).toInstant()
-                                .atZone(ZoneId.of("America/Bogota"))
-                                .toLocalDate()
-                ));
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
                 pst.setString(10, usutemp.getEstado());
                 pst.executeUpdate();
                 System.out.println(pst);
@@ -105,11 +99,7 @@ public class ManejadorProveedor {
                 pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
                 pst.setString(7, usutemp.getDirección());
                 pst.setString(8, usutemp.getCorreo());
-                pst.setDate(9, java.sql.Date.valueOf(
-                        new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).toInstant()
-                                .atZone(ZoneId.of("America/Bogota"))
-                                .toLocalDate()
-                ));
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
                 pst.setString(10, usutemp.getEstado());
                 pst.setLong(11, Integer.parseInt(usutemp.getCedula()));
                 pst.executeUpdate();
