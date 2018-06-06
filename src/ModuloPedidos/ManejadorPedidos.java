@@ -273,4 +273,25 @@ public class ManejadorPedidos {
         return rs;
 
     }
+    public Object consultarnombreproveedor(int id) {
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+
+            Conexion pg = new Conexion();
+            conn = pg.postgresConn();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT  nombre\n"
+                    + "from proveedor\n"
+                    + "where cedula=" + id + "  ");
+        } catch (SQLException ex) {
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+
+    }
 }

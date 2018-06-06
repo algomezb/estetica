@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Guiproveedores;
+package GuiPedidos;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Lizet
  */
-public class GuiManejoProveedores extends javax.swing.JFrame {
+public class GuiManejoPedido extends javax.swing.JFrame {
 
     /**
-     * Creates new form GuiManejoProveedores
+     * Creates new form GuiManejoPedido
      */
-    public GuiManejoProveedores() {
+    public GuiManejoPedido() {
         initComponents();
     }
 
@@ -34,15 +38,16 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Manejo de provveedores");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pedidos.png"))); // NOI18N
 
-        jMenu1.setText("Manejo de provedores");
+        jMenu1.setText("Operaciones producto");
 
-        jMenuItem1.setText("Ingresar proveedor");
+        jMenuItem1.setText("Ingresar Pedido");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -50,7 +55,7 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Consultar Proveedor");
+        jMenuItem2.setText("Consultar Pedido");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -58,7 +63,7 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Modificar Provedor");
+        jMenuItem3.setText("Modificar Pedido");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -66,13 +71,21 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
-        jMenuItem4.setText("Inhabilitar Proveedor");
+        jMenuItem4.setText("Inhabilitar Pedido");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Consulltar todos producto");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -85,40 +98,69 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 328, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        IngresarProveedor empgrf = new IngresarProveedor();
-            empgrf.setVisible(true);
+      RealizarPedidos rp = null;
+        try {
+            rp = new RealizarPedidos();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiManejoPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      rp.setVisible(true);
+      
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         ConsultarProveedor ConsProv = new ConsultarProveedor();
-            ConsProv.setVisible(true);
+       ConsultarPedido consped = null;
+        try {
+            consped = new ConsultarPedido();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiManejoPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       consped.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        ConsultarPedido conspe = null;
+        try {
+            conspe = new ConsultarPedido();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiManejoPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conspe.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-         InhabilitarProveedor InhProv = new InhabilitarProveedor();
-            InhProv.setVisible(true);
+       InhabilitarPedido inhapedido = null;
+        try {
+            inhapedido = new InhabilitarPedido();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuiManejoPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       inhapedido.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        ModificarProveedor ModProv = new ModificarProveedor();
-            ModProv.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+      ConsultarTodosProductos contodos=new ConsultarTodosProductos();
+      contodos.setVisible(true);
+              
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,20 +179,20 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiManejoProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiManejoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiManejoProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiManejoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiManejoProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiManejoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiManejoProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiManejoPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiManejoProveedores().setVisible(true);
+                new GuiManejoPedido().setVisible(true);
             }
         });
     }
@@ -164,5 +206,6 @@ public class GuiManejoProveedores extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
