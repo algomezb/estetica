@@ -317,7 +317,10 @@ public class RealizarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-
+ String c = String.valueOf(evt.getKeyChar());
+        if (!c.matches("[0-9]")) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped

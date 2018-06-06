@@ -46,7 +46,7 @@ public class ManejadorProveedor {
             pst.setLong(6, Long.parseLong(proveedor.getTelefono()));
             pst.setString(7, proveedor.getDirección());
             pst.setString(8, proveedor.getCorreo());
-            pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(proveedor.getFechaNacimiento()).getTime()));
+            pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(proveedor.getFechaNacimiento()).getTime()));
             pst.setString(10, proveedor.getEstado());
             pst.executeUpdate();
             System.out.println(pst);

@@ -120,7 +120,7 @@ public class ConsultarProveedor extends javax.swing.JFrame {
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel8.setText("Fecha Nacimiento");
+        jLabel8.setText("Fecha ingreso");
 
         jTextField7.setEditable(false);
         jTextField7.setBackground(new java.awt.Color(204, 204, 204));
