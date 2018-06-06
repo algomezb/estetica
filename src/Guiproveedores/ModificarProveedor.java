@@ -333,7 +333,12 @@ public class ModificarProveedor extends javax.swing.JFrame {
                 jTextField5.getText(),
                 jTextField6.getText()
         );
-        manejoprov.modificar(prov);
+        String errores = prov.validar();
+        if (!errores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, errores);
+        } else {
+            manejoprov.modificar(prov);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped

@@ -5,6 +5,8 @@
  */
 package Miembros;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lizet
@@ -16,7 +18,7 @@ public class Usuarios {
     protected String nombre;
     protected String apellido;
     protected String telefono;
-    protected String dirección; 
+    protected String dirección;
     protected String correo;
     protected String fechaNacimiento;
 
@@ -98,4 +100,37 @@ public class Usuarios {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public String validar() {
+        ArrayList<String> errors = new ArrayList<String>();
+        if (this.cedula.isEmpty()) {
+            errors.add("Cedula: No debe estar vacío");
+        }
+        if (this.codigo.isEmpty()) {
+            errors.add("Codigo: No debe estar vacío");
+        }
+        if (this.nombre.isEmpty()) {
+            errors.add("Nombre: No debe estar vacío");
+        }
+        if (this.apellido.isEmpty()) {
+            errors.add("Apellido: No debe estar vacío");
+        }
+        if (this.telefono.isEmpty()) {
+            errors.add("Telefono: No debe estar vacío");
+        }
+        if (this.dirección.isEmpty()) {
+            errors.add("Dirección: No debe estar vacío");
+        }
+        if (this.correo.isEmpty()) {
+            errors.add("Correo: No debe estar vacío");
+        }
+        if (this.fechaNacimiento.isEmpty()) {
+            errors.add("Fecha nacimiento: No debe estar vacío");
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String error : errors) {
+            sb.append(error);
+            sb.append('\n');
+        }
+        return sb.toString();
+    }
 }
