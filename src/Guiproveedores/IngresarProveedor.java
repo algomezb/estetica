@@ -258,10 +258,12 @@ public class IngresarProveedor extends javax.swing.JFrame {
                 jTextField5.getText(),
                 jTextField6.getText()
         );
-        boolean validardatosvacios = validardatosvacios();
-       
-       
-        if (validardatosvacios == false ) {
+
+        String errores = prov.validar();
+
+        if (!errores.isEmpty()) {
+            JOptionPane.showMessageDialog(this, errores);
+        } else {
             boolean resultado = manejoprov.insertar(prov);
             if (resultado) {
                 JOptionPane.showMessageDialog(this, "Acabamos de insertar el nuevo registro");
@@ -269,8 +271,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Un proveedor con esa cedula ya existe");
             }
-        } else{
-             JOptionPane.showMessageDialog(this, "El registro ya se encuentra ingresado");
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -318,7 +318,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
         correo = jTextField6.getText().trim();
 
         if (apellido.isEmpty() || nombre.isEmpty() || nic.isEmpty()
-            || direccion.isEmpty() || correo.isEmpty()) {
+                || direccion.isEmpty() || correo.isEmpty()) {
             resultado = true;
             JOptionPane.showMessageDialog(this, "No se deben dejar espacios vacios");
         }
