@@ -9,14 +9,14 @@ package Negocio;
  *
  * @author Lizet
  */
-public class articulopedido {
+public class ArticuloPedido {
     int idarticulo;
     int codigo;
 
-    public articulopedido() {
+    public ArticuloPedido() {
     }
 
-    public articulopedido(int idarticulo, int codigo) {
+    public ArticuloPedido(int idarticulo, int codigo) {
         this.idarticulo = idarticulo;
         this.codigo = codigo;
     }

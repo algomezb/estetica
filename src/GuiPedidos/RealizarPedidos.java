@@ -9,7 +9,7 @@ import ModuloPedidos.ManejadorPedidos;
 import Negocio.ConstructorPedido;
 
 import Negocio.Pedido;
-import Negocio.articulopedido;
+import Negocio.ArticuloPedido;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -22,16 +22,16 @@ import javax.swing.JOptionPane;
  *
  * @author Lizet
  */
-public class Realizarpedidos extends javax.swing.JFrame {
+public class RealizarPedidos extends javax.swing.JFrame {
 
     /**
-     * Creates new form Realizarpedidos
+     * Creates new form RealizarPedidos
      */
     String fechaactual = fechaactual();
 
     ModuloPedidos.ManejadorPedidos manejopedi;
 
-    public Realizarpedidos() throws SQLException {
+    public RealizarPedidos() throws SQLException {
         initComponents();
         manejopedi = new ManejadorPedidos();
         jTextField2.setText(fechaactual);
@@ -244,7 +244,10 @@ public class Realizarpedidos extends javax.swing.JFrame {
         if (!pediErrores.isEmpty()) {
             JOptionPane.showMessageDialog(this, pediErrores);
         } else {
-            articulopedido articulopedido = new articulopedido(Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField1.getText()));
+            ArticuloPedido articulopedido = new ArticuloPedido(
+                    Integer.parseInt(jTextField4.getText()),
+                    Integer.parseInt(jTextField1.getText())
+            );
             manejopedi.insertarpedido(pedi);
             manejopedi.insertararticulopedido(articulopedido);
         }
@@ -322,23 +325,24 @@ public class Realizarpedidos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Realizarpedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Realizarpedidos().setVisible(true);
+                    new RealizarPedidos().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(Realizarpedidos.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RealizarPedidos.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

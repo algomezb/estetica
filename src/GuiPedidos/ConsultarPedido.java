@@ -9,7 +9,7 @@ package GuiPedidos;
 import ModuloPedidos.ManejadorPedidos;
 
 import Negocio.Pedido;
-import Negocio.articulopedido;
+import Negocio.ArticuloPedido;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
