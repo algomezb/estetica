@@ -6,8 +6,7 @@
 package Guiproveedores;
 
 import Moduloproveedores.ManejadorProveedor;
-import Miembros.proveedor;
-import java.awt.Component;
+import Miembros.Proveedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -52,12 +51,8 @@ public class IngresarProveedor extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -66,7 +61,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Ingresar Proveedores");
 
         jLabel1.setText("Cedula");
@@ -110,11 +105,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
         jLabel7.setText("Correo");
 
-        jLabel8.setText("Fecha Nacimiento");
-
         jLabel9.setText("Nic");
-
-        jLabel10.setText("Tiempo");
 
         jLabel11.setText("Apellido");
 
@@ -145,66 +136,44 @@ public class IngresarProveedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(49, 49, 49)
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel1)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jLabel11)
-                                                    .addComponent(jLabel4))
-                                                .addGap(54, 54, 54)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel7)
-                                                        .addComponent(jLabel6))
-                                                    .addGap(54, 54, 54))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel8)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jLabel10))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addGap(60, 60, 60)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jButton2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel12))
+                        .addGap(76, 76, 76)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField8)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField10)
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField5)
+                            .addComponent(jTextField6)
+                            .addComponent(activo)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(403, 403, 403))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,8 +185,8 @@ public class IngresarProveedor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -236,21 +205,13 @@ public class IngresarProveedor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel12)
+                    .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(activo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(19, 19, 19))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,7 +251,15 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        proveedor prov = new proveedor(jTextField8.getText(), jTextField9.getText(), activo.getText(), Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField3.getText()), jTextField2.getText(), jTextField10.getText(), Integer.parseInt(jTextField4.getText()), jTextField5.getText(), jTextField6.getText(), jTextField7.getText());
+        Proveedor prov = new Proveedor(
+                jTextField8.getText(),
+                activo.getText(), Integer.parseInt(jTextField1.getText()),
+                Integer.parseInt(jTextField3.getText()), jTextField2.getText(),
+                jTextField10.getText(),
+                Integer.parseInt(jTextField4.getText()),
+                jTextField5.getText(),
+                jTextField6.getText()
+        );
         boolean validardatosvacios = validardatosvacios();
        
        
@@ -336,7 +305,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
     public void limpiar() {
 
         jTextField8.setText(" ");
-        jTextField9.setText(" ");
         jTextField1.setText(" ");
         jTextField3.setText(" ");
         jTextField2.setText(" ");
@@ -344,7 +312,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
         jTextField4.setText(" ");
         jTextField5.setText(" ");
         jTextField6.setText(" ");
-        jTextField7.setText(" ");
     }
 
     public boolean validardatosvacios() {
@@ -367,15 +334,11 @@ public class IngresarProveedor extends javax.swing.JFrame {
         telefono = Integer.parseInt(jTextField4.getText());
         direccion = jTextField5.getText();
         correo = jTextField6.getText();
-        fechanacimiento = jTextField7.getText();
-        tiempo = jTextField9.getText();
 
         if (apellido.equals("") || nombre.equals("") || Nic.equals("")
-                || direccion.equals("") || correo.equals("") || fechanacimiento.equals("")
-                || tiempo.equals("")) {
+                || direccion.equals("") || correo.equals("")) {
             resultado = true;
             JOptionPane.showMessageDialog(this, "No se deben dejar espacios vacios");
-
         }
         return resultado;
     }
@@ -419,7 +382,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField activo;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -428,7 +390,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -437,8 +398,6 @@ public class IngresarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

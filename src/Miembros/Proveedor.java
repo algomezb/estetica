@@ -5,27 +5,29 @@
  */
 package Miembros;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Lizet
  */
-public class proveedor extends Usuarios{
+public class Proveedor extends Usuarios{
     
     protected String nic;
-    protected String tiempo;
     protected String estado;
 
    // public proveedor(int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo, String fechaNacimiento) {
         //super(cedula, codigo, nombre, apellido, telefono, dirección, correo, fechaNacimiento);
     //}
 
-    public proveedor() {
+    public Proveedor() {
     }
 
-    public proveedor(String nic, String tiempo, String estado, int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo, String fechaNacimiento) {
-        super(cedula, codigo, nombre, apellido, telefono, dirección, correo, fechaNacimiento);
+    public Proveedor(String nic, String estado, int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo) {
+        super(cedula, codigo, nombre, apellido, telefono, dirección, correo,
+                new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
         this.nic = nic;
-        this.tiempo = tiempo;
         this.estado = estado;
     }
 
@@ -35,14 +37,6 @@ public class proveedor extends Usuarios{
 
     public void setNic(String nic) {
         this.nic = nic;
-    }
-
-    public String getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(String tiempo) {
-        this.tiempo = tiempo;
     }
 
     public String getEstado() {
