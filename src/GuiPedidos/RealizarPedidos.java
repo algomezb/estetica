@@ -174,6 +174,9 @@ public class RealizarPedidos extends javax.swing.JFrame {
 
         jLabel12.setText("Nombre Proveedor");
 
+        jTextField11.setEditable(false);
+        jTextField11.setForeground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
