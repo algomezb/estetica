@@ -5,8 +5,8 @@
  */
 package Miembros;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -26,7 +26,7 @@ public class Proveedor extends Usuarios{
 
     public Proveedor(String nic, String estado, int cedula, int codigo, String nombre, String apellido, int telefono, String dirección, String correo) {
         super(cedula, codigo, nombre, apellido, telefono, dirección, correo,
-                DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDate.now()));
+                new SimpleDateFormat("yyyy/MM/dd").format(new Date()));
         this.nic = nic;
         this.estado = estado;
     }
