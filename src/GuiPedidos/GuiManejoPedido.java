@@ -136,14 +136,13 @@ public class GuiManejoPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        ConsultarPedido conspe = null;
+       ModificarPedido md = null;
         try {
-            conspe = new ConsultarPedido();
+            md = new ModificarPedido();
         } catch (SQLException ex) {
             Logger.getLogger(GuiManejoPedido.class.getName()).log(Level.SEVERE, null, ex);
         }
-        conspe.setVisible(true);
-        
+       md.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
