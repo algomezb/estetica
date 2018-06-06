@@ -51,7 +51,7 @@ public class ManejadorProveedor {
                 pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
                 pst.setString(7, usutemp.getDirección());
                 pst.setString(8, usutemp.getCorreo());
-                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(usutemp.getFechaNacimiento()).getTime()));
                 pst.setString(10, usutemp.getEstado());
                 pst.executeUpdate();
                 System.out.println(pst);
@@ -99,7 +99,7 @@ public class ManejadorProveedor {
                 pst.setLong(6, Long.parseLong(usutemp.getTelefono()));
                 pst.setString(7, usutemp.getDirección());
                 pst.setString(8, usutemp.getCorreo());
-                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy/MM/dd").parse(usutemp.getFechaNacimiento()).getTime()));
+                pst.setDate(9, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(usutemp.getFechaNacimiento()).getTime()));
                 pst.setString(10, usutemp.getEstado());
                 pst.setLong(11, Integer.parseInt(usutemp.getCedula()));
                 pst.executeUpdate();
@@ -118,7 +118,7 @@ public class ManejadorProveedor {
     public boolean inhabilitar(String cedula, String estado) {
         
         String inhabilitarSql =
-                "UPDATE proveedor " + 
+                "UPDATE pedido " + 
                 "SET estado = ? " +
                 "WHERE cedula = ?";
 
