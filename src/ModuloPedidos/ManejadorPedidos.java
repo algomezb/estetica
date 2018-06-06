@@ -31,8 +31,6 @@ public class ManejadorPedidos {
         conn = conpg.postgresConn();
     }
 
-  
-
     public boolean insertarpedido(Object obj) {
         boolean var = false;
 
@@ -45,7 +43,7 @@ public class ManejadorPedidos {
                     + usutemp.getCodigo() + ",'" + usutemp.getFecha() + "',"
                     + usutemp.getCantidad() + "," + usutemp.getValor() + ",'"
                     + usutemp.getIva() + "','" + usutemp.getEstado() + "',"
-                    + usutemp.getValor() + ",'" + usutemp.getProveedor()+ "')";
+                    + usutemp.getValor() + ",'" + usutemp.getProveedor() + "')";
 
             try {
 
@@ -66,8 +64,8 @@ public class ManejadorPedidos {
 
         return var;
     }
-     public void insertararticulopedido(Object obj) {
-        
+
+    public void insertararticulopedido(Object obj) {
 
         if (obj instanceof articulopedido) {
 
@@ -81,21 +79,19 @@ public class ManejadorPedidos {
 
                 Statement st = conn.createStatement();
                 st.executeUpdate(consultaSQL);
-                
+
                 System.out.println(st);
-              
 
             } catch (SQLException ex) {
-             
+
                 ex.printStackTrace();
-               
 
             }
         }
 
-     
     }
-     public Object consultarpedido() {
+
+    public Object consultarpedido() {
 
         Connection conn = null;
         Statement st = null;
@@ -116,7 +112,8 @@ public class ManejadorPedidos {
         return rs;
 
     }
-     public ResultSet consultarTodosm() {
+
+    public ResultSet consultarTodosm() {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -133,7 +130,8 @@ public class ManejadorPedidos {
         }
         return rs;
     }
-     public Object consultarpedido(int id) {
+
+    public Object consultarpedido(int id) {
 
         Connection conn = null;
         Statement st = null;
@@ -144,11 +142,52 @@ public class ManejadorPedidos {
             Conexion pg = new Conexion();
             conn = pg.postgresConn();
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT  codigo,fecha,cantidad,valor,iva,valortotal,estado,cedulaproveedor,telefono,apellido,estado\n"
+            rs = st.executeQuery("select proveedor.nombre, \n"
+                    + "  proveedor.apellido, \n"
+                    + "  pedido.cedulaproveedor, \n"
+                    + "  pedido.codigo, \n"
+                    + "  pedido.fecha, \n"
+                    + "  pedido.cantidad,\n"
+                    + "  pedido.valor,\n"
+                    + "  pedido.iva,\n"
+                    + "  pedido.valortotal,\n"
+                    + "  pedido.estado,\n"
+                    + "  producto.nombre,\n"
+                    + "  producto.id \n"
                     + "from proveedor\n"
-                    + "where cedula=" + id + " ");
+                    + "join pedido on proveedor.cedula = pedido.cedulaproveedor\n"
+                    + "join articulopedido on articulopedido.codigo = pedido.codigo\n"
+                    + "join producto on producto.id = articulopedido.id\n"
+                    + "where pedido.codigo=" + id + " ");
         } catch (SQLException ex) {
-            Logger.getLogger(Proveedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+
+    }
+
+    public Object consultarpedidoModificar(int id) {
+
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+
+            Conexion pg = new Conexion();
+            conn = pg.postgresConn();
+            st = conn.createStatement();
+            rs = st.executeQuery("select codigo, \n"
+                    + "  fecha, \n"
+                    + "  cantidad, \n"
+                    + "  cantidad, \n"
+                    + "  valortotal, \n"
+                    + "  estado\n"
+                    + "from pedido\n"
+                    + "where codigo=" + id + " ");
+        } catch (SQLException ex) {
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rs;
