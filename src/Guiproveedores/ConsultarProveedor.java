@@ -318,7 +318,7 @@ public class ConsultarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_activoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int ids=Integer.parseInt(jTextField11.getText());
+        int ids=Integer.parseInt(jTextField1.getText());
          
         ResultSet rs = null;
 
@@ -329,11 +329,11 @@ public class ConsultarProveedor extends javax.swing.JFrame {
             if ( rs.getRow() == 0 ) {
             if (rs.next()) {
                  
-                jTextField8.setText(rs.getString(8));
-                jTextField1.setText(rs.getString(1));
-                jTextField2.setText(rs.getString(2));
-                jTextField10.setText(rs.getString(10));
-                jTextField4.setText(rs.getString(9));
+                jTextField1.setText(rs.getString(5));
+                jTextField2.setText(rs.getString(6));
+                jTextField3.setText(rs.getString(7));
+                jTextField4.setText(rs.getString(13));
+                jTextField5.setText(rs.getString(9));
                 jTextField5.setText(rs.getString(4));
                 jTextField6.setText(rs.getString(5));
                 jTextField7.setText(rs.getString(6));
